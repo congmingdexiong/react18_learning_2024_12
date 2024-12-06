@@ -1,22 +1,20 @@
 import logo from './logo.svg';
 
+
+const articleType = 1;
+function getArticleTem() {
+  if (articleType === 0) {
+    return <div>我是猪猪乐1</div>
+  } else if (articleType === 1) {
+    return <div>我是猪猪乐2</div>
+  } else {
+    return <div>我是猪猪乐3</div>
+  }
+}
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App1">
+      {getArticleTem()}
     </div>
   );
 }
