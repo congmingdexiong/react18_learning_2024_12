@@ -1,0 +1,28 @@
+﻿import React, { useState } from 'react';
+
+export default function App() {
+  const [msg, setMsg] = useState('');
+  const getMessageFn = (msg) => setMsg(msg);
+  return (
+    <div>
+      App
+      {/* getMessageFn 是APP本身的函数， sendMessageFromA理解为A上面的一个属性
+      本质就是A通过自身的一个属性sendMessageFromA 把值传给App的getMessageFn方法 */}
+      <A sendMessageFromA={getMessageFn} />
+      <B messageFromA={msg} />
+    </div>
+  );
+}
+
+function A({ sendMessageFromA }) {
+  const name = 'msg from A1';
+  return (
+    <div>
+      this is A<button onClick={() => sendMessageFromA(name)}>send</button>
+    </div>
+  );
+}
+
+function B({ messageFromA }) {
+  return <div>this is B,messageFromA: {messageFromA}</div>;
+}

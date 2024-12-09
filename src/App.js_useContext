@@ -1,0 +1,26 @@
+﻿import React, { createContext, useContext, useState } from 'react';
+
+const MsgContext = createContext();
+export default function App() {
+  return (
+    <div style={{ border: '3px solid red' }}>
+      <MsgContext.Provider value={'this is app msg'}>
+        App
+        <A />
+      </MsgContext.Provider>
+    </div>
+  );
+}
+
+function A() {
+  return (
+    <div style={{ border: '2px solid blue' }}>
+      this is A <B />
+    </div>
+  );
+}
+
+function B() {
+  const msg = useContext(MsgContext);
+  return <div style={{ border: '1px solid green' }}>this is B {msg}</div>;
+}

@@ -1,0 +1,11 @@
+﻿import React from 'react';
+
+export default function App() {
+  const getMsgFromChild = (msg) => console.log(msg);
+  return <Son getMsgFromChild={getMsgFromChild}></Son>;
+}
+
+function Son({ getMsgFromChild }) {
+  const msg = 'I am son';
+  return <button onClick={() => getMsgFromChild(msg)}>this is son</button>;
+}
