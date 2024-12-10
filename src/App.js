@@ -92,10 +92,8 @@ function getArticleTem() {
   }
 }
 
-const App = () => {
+function useGetList() {
   const [commentList, setCommentList] = useState([]);
-  const [type, setType] = useState('hot');
-
   useEffect(() => {
     async function getList() {
       const res = await axios.get('http://localhost:3004/list');
@@ -104,13 +102,53 @@ const App = () => {
     getList();
   }, []);
 
+  return { commentList, setCommentList };
+}
+
+function Item({ item, onDel }) {
+  return (
+    <div key={item.rpid} className="reply-item">
+      {/* 头像 */}
+      <div className="root-reply-avatar">
+        <div className="bili-avatar">
+          <img className="bili-avatar-img" alt="" src={item.user.avatar} />
+        </div>
+      </div>
+
+      <div className="content-wrap">
+        {/* 用户名 */}
+        <div className="user-info">
+          <div className="user-name">{item.user.uname}</div>
+        </div>
+        {/* 评论内容 */}
+        <div className="root-reply">
+          <span className="reply-content">{item.content}</span>
+          <div className="reply-info">
+            {/* 评论时间 */}
+            <span className="reply-time">{item.ctime}</span>
+            {/* 评论数量 */}
+            <span className="reply-time">点赞数:{item.like}</span>
+            {user.uid === item.user.uid && (
+              <span className="delete-btn" onClick={() => onDel(item.rpid)}>
+                删除
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const App = () => {
+  const [type, setType] = useState('hot');
+  const { commentList, setCommentList } = useGetList();
+
   const handleDel = (id) => {
-    console.log(id);
     setCommentList(commentList.filter((item) => item.rpid !== id));
   };
 
   const handleTabChange = (tab) => {
-    console.log(tab);
     setType(tab.type);
     if (tab.type === 'hot') {
       //根据点赞数量排序
@@ -202,36 +240,7 @@ const App = () => {
         <div className="reply-list">
           {/* 评论项 */}
           {commentList.map((item) => (
-            <div key={item.rpid} className="reply-item">
-              {/* 头像 */}
-              <div className="root-reply-avatar">
-                <div className="bili-avatar">
-                  <img className="bili-avatar-img" alt="" src={item.avatar} />
-                </div>
-              </div>
-
-              <div className="content-wrap">
-                {/* 用户名 */}
-                <div className="user-info">
-                  <div className="user-name">{item.user.uname}</div>
-                </div>
-                {/* 评论内容 */}
-                <div className="root-reply">
-                  <span className="reply-content">{item.content}</span>
-                  <div className="reply-info">
-                    {/* 评论时间 */}
-                    <span className="reply-time">{item.ctime}</span>
-                    {/* 评论数量 */}
-                    <span className="reply-time">点赞数:{item.like}</span>
-                    {user.uid === item.user.uid && (
-                      <span className="delete-btn" onClick={() => handleDel(item.rpid)}>
-                        删除
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Item item={item} key={item.id} onDel={handleDel}></Item>
           ))}
         </div>
       </div>
