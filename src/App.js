@@ -2,10 +2,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement, addToNum } from './store/module/counterStore';
 import { fetchChannelList } from './store/module/channelStrore';
-export default function App() {
+export default function App(id) {
   const { count } = useSelector((state) => state.counter);
   // eslint-disable-next-line no-undef
   const [msg, setMsg] = useState('');
+  const [message, setMessage] = useState("");
   const dispatch = useDispatch();
   const { channelList } = useSelector((state) => state.channel);
 
@@ -26,19 +27,34 @@ export default function App() {
     }
   };
 
+  // useEffect(() => {
+  //   console.log("id:", id);
+
+  //   const handler = (event) => {
+  //     console.log('Received from Elm:', event.detail);
+  //     setMsg(event.detail);
+  //   };
+
+  //   window.addEventListener('elm-to-react', handler);
+  //   return () => window.removeEventListener('elm-to-react', handler);
+  // }, []);
+
   useEffect(() => {
-    const handler = (event) => {
-      console.log('Received from Elm:', event.detail);
-      setMsg(event.detail);
+    // 注册消息接收函数
+    window.reactMsgHandler[id] = (data) => {
+      setMessage(data);
     };
 
-    window.addEventListener('elm-to-react', handler);
-    return () => window.removeEventListener('elm-to-react', handler);
-  }, []);
+    return () => {
+      delete window.reactMsgHandler[id];
+    };
+  }, [id]);
 
   return (
     <div className="App">
-      Message from Elm: {msg}
+      <h4>React组件：{id}</h4>
+      <p>接收数据：{message}</p>
+      {/* Message from Elm: {msg}
       <button
         onClick={() => {
           dispatch(sendToElm());
@@ -79,7 +95,7 @@ export default function App() {
         {channelList.map((item) => (
           <li key={item.id}>{item.name}</li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 }
