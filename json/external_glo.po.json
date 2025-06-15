@@ -1,0 +1,30 @@
+[
+    {
+        "agreementType": "global_cookie policy",
+        "language": "en-US",
+        "acceptanceText": "You acknowledge to have read {client_ name}'s [Privacy Policy] ((link).",
+        "created": "1629706028",
+        "modified": 416297066281
+    },
+    {
+        "agreementType": "global_cookie policy",
+        "Language": "ja-JP",
+        "acceptanceText": "{client_name}の[ブライバシーポリシー]({Link})への間意。",
+        "created": "1629706028",
+        "modified": "1629706028"
+    },
+    {
+        "agreementType": "global_cookie policy",
+        "Language": "zh-CN",
+        "acceptanceText": "您已阅读{client_name}的[隐私权政策］({Link})。",
+        "created": "1629796028",
+        "modified": "1629706028"
+    },
+    {
+        "agreementType": "global_cookie policy",
+        "Language": "zh-TW",
+        "acceptanceText": "您已閱說(client_name}的I陽私權政策］({Link})。",
+        "created": "1629706028",
+        "modified": "1629706028"
+    }
+]

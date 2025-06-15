@@ -5,4 +5,5 @@
         "*.ts": "typescript",
         "*.json": "jsonc"
     },
+    "liveServer.settings.port": "30001",
 }

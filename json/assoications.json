@@ -1,0 +1,14 @@
+{
+    "clientId": "tuzi_global",
+    "agreementId": "O1EN9XEA8H12EE28T307ESYVGN",
+    "defaultLanguage": "en-US",
+    "deprecationTime": null,
+    "created": "1619423934",
+    "modified": "1619423934",
+    "tags": [],
+    "display": {
+        "optional": {
+            "policy": "unseen"
+        }
+    }
+}

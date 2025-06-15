@@ -1,0 +1,44 @@
+{
+    "agneementId": "O1EN9XEA8H12EE28T307ESYVGN",
+    "name": "Insurance Planning Cookie Policy",
+    "description": "Insurance Planning Cookie Policy",
+    "owner": [
+        "insurance_planning_app"
+    ],
+    "purpose": [
+        "Cookie Policy"
+    ],
+    "required": true,
+    "agreementType": "global_cookie policy",
+    "tags": [
+        "cp",
+        "secondary"
+    ],
+    "hasContent": false,
+    "deprecationTime": null,
+    "created": "1579046400",
+    "modified": "1579046400",
+    "versions": [
+        {
+            "version": "1.0",
+            "agreementId": "B1ENSXEA3H12EE28T3Q7ESYVGN",
+            "activationTime": "1579046400",
+            "deprecationTime": null,
+            "created": "1579046400",
+            "modified": "1579046400",
+            "agreementTexts": [
+                {
+                    "agreementTextId": "01EN9XGQ0AXG8HQDHKFH6HYSQS",
+                    "agreementId": "O1EN9XEA8H12EE28T3Q7ESYVGN",
+                    "language": "ja-JP",
+                    "tit1e": "サイト利用上の注意",
+                    "content": "",
+                    "url": "https: //www.tuzi-insurance.co.jp/info/attention.html?1-id=footer_info_attention",
+                    "tags": [],
+                    "created": "1579046400",
+                    "modified": "1579046400"
+                }
+            ]
+        }
+    ]
+}
