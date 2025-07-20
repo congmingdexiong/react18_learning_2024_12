@@ -3,4 +3,6 @@ export const func1 = (param: any, str: string) => {
   console.log('main commit');
   console.log('main add-1');
   console.log('main add-2');
+  console.log('create test-commit1');
+  console.log('test-commit-1 commit');
 };
