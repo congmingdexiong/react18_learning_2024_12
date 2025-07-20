@@ -7,4 +7,5 @@ export const func1 = (param: any, str: string) => {
   console.log('test-commit-1 commit');
   console.log('test-commit-1 commit-2');
   console.log('test-commit-1 commit-3');
+  console.log('cherry pick1');
 };
