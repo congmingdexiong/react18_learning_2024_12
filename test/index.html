@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Elm + React (No Window)</title>
+  </head>
+  <body>
+    <div id="elm-root"></div>
+    <script src="elm.js"></script>
+    <script src="bundle.js"></script>
+    <!-- <script type="module" src="./main.js"></script> -->
+    <script>
+      const app = Elm.Main.init({
+        node: document.getElementById('elm-root')
+      });
+
+      app.ports.renderReact.subscribe(({ divId, initialValue }) => {
+        window.renderReactComponent(divId, {
+          initialValue,
+          onChange: (newValue) => app.ports.receiveFromReact.send(newValue)
+        });
+      });
+    </script>
+  </body>
+</html>

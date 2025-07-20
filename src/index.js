@@ -43,4 +43,35 @@ window.renderCmp('root')
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();
+// reactBridge.js
+// import React, { useState } from 'react';
+// import ReactDOM from 'react-dom/client';
+
+// function ElmControlledReact({ initialValue, onChange }) {
+//   const [value, setValue] = useState(initialValue);
+
+//   function handleChange(e) {
+//     const newVal = e.target.value;
+//     setValue(newVal);
+//     onChange(newVal);
+//   }
+
+//   return <input value={value} onChange={handleChange} placeholder="Type here" />;
+// }
+
+// export function renderReactComponent(containerId, props) {
+//   const container = document.getElementById(containerId);
+//   if (!container) {
+//     console.error(`Container ${containerId} not found`);
+//     return;
+//   }
+//   const root = ReactDOM.createRoot(container);
+//   root.render(
+//     <ElmControlledReact
+//       initialValue={props.initialValue}
+//       onChange={props.onChange}
+//     />
+//   );
+// }
+// window.renderReactComponent = renderReactComponent;

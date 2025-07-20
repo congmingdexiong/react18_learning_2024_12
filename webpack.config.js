@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     // 入口文件
-    entry: './src/index.js',
+    entry: './src/main.js',
 
     // 输出配置
     output: {
@@ -14,6 +14,11 @@ module.exports = {
 
     // 模式（development 或 production）
     mode: 'development',
+    devServer: {
+        static: './public',
+        hot: true,
+        port: 3000
+    },
 
     // 模块规则
     module: {
@@ -45,3 +50,4 @@ module.exports = {
         })
     ]
 };
+
