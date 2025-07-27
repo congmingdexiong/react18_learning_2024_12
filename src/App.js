@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement, addToNum } from './store/module/counterStore';
 import { fetchChannelList } from './store/module/channelStrore';
+import { useRef, useCallback } from 'react';
 export default function App(props) {
   const { id } = props
   const { count } = useSelector((state) => state.counter);
@@ -194,6 +195,20 @@ export default function App(props) {
   //   return () => window.removeEventListener('elm-to-react', handler);
   // }, []);
 
+  function useEventCallback(fn) {
+    const fnRef = useRef(fn);
+    useEffect(() => {
+      fnRef.current = fn; // 自动保持最新
+    });
+    return useCallback((...args) => fnRef.current(...args), []);
+  }
+
+  const handleWindowEvent = useEventCallback(() => {
+    // console.log('最新 count:', count);
+    console.log(cmpAgreement.associations[0]);
+
+  });
+
   useEffect(() => {
     // 注册消息接收函数
     window.reactMsgHandler[id] = (data) => {
@@ -204,6 +219,24 @@ export default function App(props) {
       delete window.reactMsgHandler[id];
     };
   }, [id]);
+
+  useEffect(() => {
+    const handler = (event) => {
+      // console.log(cmpAgreement.associations[0]);
+
+      // event 是 CustomEvent，数据在 event.detail
+      console.log('收到 Elm 数据:', event.detail);
+      // setData(event.detail);
+    };
+
+    // 监听 elm-to-react
+    window.addEventListener('elm-to-react', handleWindowEvent);
+
+    // 清理
+    return () => {
+      window.removeEventListener('elm-to-react', handleWindowEvent);
+    };
+  }, []);
 
   // const handleChange = (e) => {
   //   const value = e.target.value;
